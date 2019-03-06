@@ -6,7 +6,44 @@
         xmlns:local="clr-namespace:FOOP_CA1___Task_Manager"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="Categories"></ObjectDataProvider>
+    </Window.Resources>
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.75*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Column="0" Grid.Row="0"
+               Margin="2,2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="18">Task Manager</Label>
+        <Label Grid.Column="1" Grid.Row="1"
+               Margin="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+               FontSize="18">
+            My Tasks</Label>
+        <ComboBox Name="cbxCategories" Grid.Column="2" Grid.Row="1"
+                  Margin="2,5" FontSize="15"/>
+        <ComboBox Name="cbxLabels" Grid.Column="3" Grid.Row="1"
+                  Margin="2,5" FontSize="15"/>
+        <ListBox Name="lbxCurrentTasks" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3" 
+                 Margin="5" BorderBrush="Black" BorderThickness="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock HorizontalAlignment="Center" FontSize="15" Text="{Binding Path=Title}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
         
     </Grid>
 </Window>

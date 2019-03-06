@@ -20,9 +20,22 @@ namespace FOOP_CA1___Task_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Task> Tasks = new List<Task>();
+        //enum Categories { Work, Home, Personal };
+        //Categories ThisCat;
+        string[] Categories = { "All", "Home", "Work", "Personal" };
+        string[] SortBy = { "Default", "Due Date", "Priority" };
         public MainWindow()
         {
             InitializeComponent();
+            Tasks = TaskInit.GetTasks();
+            cbxCategories.ItemsSource = Categories;
+            cbxCategories.SelectedIndex = 0;
+            cbxLabels.ItemsSource = SortBy;
+            cbxLabels.SelectedIndex = 0;
+            lbxCurrentTasks.ItemsSource = Tasks;
         }
+
+
     }
 }
