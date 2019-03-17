@@ -82,5 +82,10 @@ namespace FOOP_CA1___Task_Manager
         {
 
         }
+
+        private void CbxCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }
