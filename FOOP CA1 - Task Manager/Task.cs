@@ -11,7 +11,8 @@ namespace FOOP_CA1___Task_Manager
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime DueDate { get; set; }
-        public List<string> Labels { get; set; }
+        public List<string> Labels { get; set; } = new List<string>();
+        public bool IsComplete { get; set; }
         //public Person ShareWith { get; set; }
         //public enum Priority { None, Low, Medium, High}
         public Task(string title, string description, DateTime dueDate, string labelString)
@@ -20,6 +21,7 @@ namespace FOOP_CA1___Task_Manager
             Description = description;
             DueDate = dueDate;
             SetLabels(labelString);
+            IsComplete = false;
         }
 
         public Task()

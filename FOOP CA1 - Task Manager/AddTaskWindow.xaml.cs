@@ -16,6 +16,7 @@ namespace FOOP_CA1___Task_Manager
 {
     public partial class AddTaskWindow : Window
     {
+        
         public AddTaskWindow()
         {
             InitializeComponent();
@@ -23,12 +24,34 @@ namespace FOOP_CA1___Task_Manager
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
+            MainWindow Main = Owner as MainWindow;
+            //Dialogbox config
+            string errorMessage = "Please enter detials again";
+            string caption = "Missing data";
+            MessageBoxButton boxButton = MessageBoxButton.OK;
+            MessageBoxImage boxImage = MessageBoxImage.Exclamation;
 
+            //New object
+            Task taskToAdd;
+            string title = tbxTitle.Text;
+            string descrip = tbxDescription.Text;
+            DateTime date = dpkrDate.DisplayDate;
+            string labels = tbxLables.Text;
+
+            if (title == "" || descrip == "" || date == null || labels == "")
+                MessageBox.Show(errorMessage, caption, boxButton, boxImage);
+            else
+            {
+                taskToAdd = new Task(title, descrip, date, labels);
+                Main.Tasks.Add(taskToAdd);
+            }
+            Main.ResetListBox();
+            this.Close();
         }
     }
 }

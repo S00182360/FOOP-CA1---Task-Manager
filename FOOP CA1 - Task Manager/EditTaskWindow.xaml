@@ -1,11 +1,11 @@
-﻿<Window x:Class="FOOP_CA1___Task_Manager.AddTaskWindow"
+﻿<Window x:Class="FOOP_CA1___Task_Manager.EditTaskWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FOOP_CA1___Task_Manager"
         mc:Ignorable="d"
-        Title="AddTaskWindow" Height="450" Width="400">
+        Title="EditTaskWindow" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -25,13 +25,13 @@
             <TextBlock Margin="5,20" FontSize="15" TextAlignment="Right">Labels</TextBlock>
         </StackPanel>
         <StackPanel  HorizontalAlignment="Left" Grid.Column="1" Grid.Row="1" >
-            <TextBox Name="tbxTitle" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></TextBox>
-            <TextBox Name="tbxDescription" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></TextBox>
-            <DatePicker Name="dpkrDate" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></DatePicker>
+            <TextBox Name="tbxEditTitle" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></TextBox>
+            <TextBox Name="tbxEditDescription" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></TextBox>
+            <DatePicker Name="dpkrEditDate" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></DatePicker>
             <TextBox Name="tbxLables" FontSize="15" Width="230" Margin="5,18" BorderThickness="2"></TextBox>
             <StackPanel HorizontalAlignment="Center">
-                <Button Name="btnCancel" Width="50" Margin="0,0,0,5" Click="BtnCancel_Click">Cancel</Button>
-                <Button Name="btnAdd" Width="50" Margin="0,5,0,0" Click="BtnAdd_Click">Add</Button>
+                <Button Name="btnEditCancel" Width="50" Margin="0,0,0,5" Click="BtnEditCancel_Click">Cancel</Button>
+                <Button Name="btnSave" Width="50" Margin="0,5,0,0">Save</Button>
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -23,7 +23,7 @@ namespace FOOP_CA1___Task_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Task> Tasks = new List<Task>();
+        public List<Task> Tasks = new List<Task>();
         //enum Categories { Work, Home, Personal };
         //Categories ThisCat;
         string[] Categories = { "All", "Home", "Work", "Personal" };
@@ -43,9 +43,11 @@ namespace FOOP_CA1___Task_Manager
         {
             string json = JsonConvert.SerializeObject(Tasks, Formatting.Indented);
 
-            SaveFileDialog saveHere = new SaveFileDialog();
-            saveHere.DefaultExt = ".json";
-            Nullable<bool> result = saveHere.ShowDialog();
+            SaveFileDialog saveHere = new SaveFileDialog
+            {
+                DefaultExt = ".json"
+            };
+            bool? result = saveHere.ShowDialog();
 
             if(result == true)
             {
@@ -69,23 +71,45 @@ namespace FOOP_CA1___Task_Manager
                     Tasks = JsonConvert.DeserializeObject<List<Task>>(json);
                 }
             }
-            lbxCurrentTasks.ItemsSource = null;
-            lbxCurrentTasks.ItemsSource = Tasks;
+            ResetListBox();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            AddTaskWindow addTask = new AddTaskWindow();
+            addTask.Owner = this;
+            addTask.ShowDialog();
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
+            EditTaskWindow editTask = new EditTaskWindow();
+            editTask.Owner = this;
 
+            string errorMessage = "Please Select a Task from the list";
+            string caption = "No Selection";
+            MessageBoxButton boxButton = MessageBoxButton.OK;
+            MessageBoxImage boxImage = MessageBoxImage.Information;
+
+            if (lbxCurrentTasks.SelectedItem == null)
+            {
+                MessageBox.Show(errorMessage, caption, boxButton, boxImage);
+            }
+            else
+            {
+                editTask.ShowDialog();
+            }
         }
 
         private void CbxCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        public void ResetListBox()
+        {
+            lbxCurrentTasks.ItemsSource = null;
+            lbxCurrentTasks.ItemsSource = Tasks;
         }
     }
 }

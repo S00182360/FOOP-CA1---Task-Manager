@@ -40,10 +40,11 @@ namespace FOOP_CA1___Task_Manager
             return (startDate + newSpan);
         }
 
-        public static List<string> AssignLabels(Random r)
+        public static string AssignLabels(Random r)
         {
             string[] labels = { "Work", "Home", "Family", "Medical", "Pets", "Food", "Money", "Car", "Friends", "Other"};
             List<string> assignedLabels = new List<string>();
+            string returnedLabels;
             int randomIndex = 0;
             bool isUnique = true;
             //TODO: Add logic to assign random labels
@@ -62,7 +63,8 @@ namespace FOOP_CA1___Task_Manager
             }
             if (assignedLabels.Count == 0)
                 assignedLabels.Add(labels[9]);
-            return assignedLabels;
+            returnedLabels = string.Join(",", assignedLabels.ToArray());
+            return returnedLabels;
         }
     }
 }
